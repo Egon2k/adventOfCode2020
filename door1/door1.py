@@ -1,19 +1,19 @@
 arr = []
-with open('door1.txt') as f:
+with open('data.txt') as f:
     for line in f:
         arr.append(int(line.strip('\n')))
 
-# part A
+# part 1
 for i in range(len(arr)):
     for j in arr[i+1:]:
         if ((arr[i]+j) == 2020):
-            print(f'Part A: {arr[i]*j}')
+            print(f'Part 1: {arr[i]*j}')
 
-# part B
+# part 2
 for i in range(len(arr)):
     for j in range(len(arr[i:])):
         for k in arr[j:]:
             if ((arr[i]+arr[j]+k) == 2020):
-                print(f'Part B: {arr[i]*arr[j]*k}')
+                print(f'Part 2: {arr[i]*arr[j]*k}')
                 
               
