@@ -5,9 +5,9 @@ def countTrees(map, right, down):
             # ignore first row
             pass
         else:
-            # only consider 'down' row (dont forget to ignore first row)
+            # only consider every 'down'-th row (dont forget to ignore first row)
             if ((1 + i) % down) == 0:
-                # check every 'right' element if its a tree (1) and count
+                # check every 'right'-th element if its a tree (1)
                 if row[(i * right) % len(row)] == 1:
                     count += 1
     return count
