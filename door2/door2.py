@@ -1,7 +1,7 @@
-partA = 0
-partB = 0
+part1 = 0
+part2 = 0
 
-with open('door2.txt','r') as f:
+with open('data.txt','r') as f:
     for line in f:
         # part A
 
@@ -13,7 +13,7 @@ with open('door2.txt','r') as f:
         quantity_high = quantity.split('-')[1]
 
         if (password.count(letter) >= int(quantity_low)) and (password.count(letter) <= int(quantity_high)):
-            partA += 1
+            part1 += 1
 
         # part B
 
@@ -21,8 +21,8 @@ with open('door2.txt','r') as f:
         second_pos = int(quantity_high)
 
         if ((password[first_pos] == letter) and  (password[second_pos] != letter)) or ((password[first_pos] != letter) and  (password[second_pos] == letter)):
-            partB += 1
+            part2 += 1
 
 
-    print(f'Part A: {partA}')
-    print(f'Part B: {partB}')
+    print(f'Part 1: {part1}')
+    print(f'Part 2: {part2}')
