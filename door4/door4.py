@@ -11,22 +11,21 @@ def createDictFromEntry(entry):
 
 if __name__ == "__main__":
     data = []
-    entry = ''
-
+    
     with open('data.txt','r') as f:
         data = f.read().split('\n\n')
 
     # part 1
     part1 = 0
 
-    req = ['byr','iyr', 'eyr','hgt','hcl','ecl','pid']
+    reqFields = ['byr','iyr', 'eyr','hgt','hcl','ecl','pid']
 
     for entry in data:
         required = 0
-        for field in req:
+        for field in reqFields:
             if field in entry:
                 required += 1
-        if required >= len(req):
+        if required >= len(reqFields):
             part1 += 1
 
     print(f'Part 1: {part1}')
