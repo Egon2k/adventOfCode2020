@@ -26,6 +26,6 @@ if __name__ == "__main__":
     for i in range(1024):
         # find seat not taken
         if i not in binData:
-            # find seat that meet the requirement
+            # find seat that meets the requirement
             if i + 1 in binData and i - 1 in binData:
                 print(f'Part 2: {i}')
