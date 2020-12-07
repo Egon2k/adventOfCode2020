@@ -1,5 +1,3 @@
-data = []
-
 def getBagDict(rule):
     bags = dict()
     words = rule.split()
@@ -35,21 +33,39 @@ def isContainingBag(outerBag, ruleDict, breakCritereon):
 
     return retVal
 
+def countBags(ruleDict, outerBag):
+    sumBags = 1 # set to 1, otherwise recursion does not work
+    
+    # iterate over items in dict: https://stackoverflow.com/a/3294899
+    for bag, numberOfBags in ruleDict[outerBag].items():
+        sumBags += (countBags(ruleDict, bag)) * numberOfBags
+
+    return sumBags
+
 if __name__ == "__main__":
-    with open('data_test.txt','r') as f:
+    data = []
+
+    with open('data.txt','r') as f:
         data = f.read()[:-1].split('\n') # [:-1] to cut off the last \n
 
     ruleDict = dict()
 
-    # part 1
+
     for rule in data:
         ruleDict[getRuleName(rule)] = getBagDict(rule)
 
+    # part 1
     part1 = 0
     for bag in ruleDict:
         part1 += isContainingBag(bag, ruleDict, 'shiny gold')
 
     # remove shiny gold bag itself
-    part1 -= 1
+    print(f'Part 1: {part1 - 1}')
 
-    print(f'Part 1: {part1}')
+    # part 2
+    part2 = countBags(ruleDict, 'shiny gold')
+
+    # remove shiny gold bag itself
+    print(f'Part 2: {part2 - 1}')
+
+
