@@ -1,6 +1,4 @@
 def checkDiff(adapters, diff):
-    adapters.sort()
-
     count = 1 # test data showed that I need this xD
 
     for i in range(len(adapters)):
@@ -16,6 +14,10 @@ if __name__ == "__main__":
         data = f.read()[:-1].split('\n') # [:-1] to cut off the last \n
 
     adapters = list(map(int, data))
+    
+    adapters.sort()
 
     # part 1
-    print(f'Part1 : {checkDiff(adapters, 1) * checkDiff(adapters, 3)}')
+    print(f'Part 1: {checkDiff(adapters, 1) * checkDiff(adapters, 3)}')
+
+    # part 2
