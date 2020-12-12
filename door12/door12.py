@@ -36,3 +36,50 @@ if __name__ == "__main__":
                 coords[1] += val
 
     print(f'Part 1: {abs(coords[0]) + abs(coords[1])}')
+
+
+    #part 2
+
+    coords = [0,0]      # east(+)/west(-), north(+)/south(-)
+    waypoint = [10,1]   # east(+)/west(-), north(+)/south(-)   
+
+    for instr in data:
+
+        l = instr[0]
+        val = int(instr[1:])
+
+        if  l == 'N':
+            waypoint[1] += val
+        elif  l == 'S':
+            waypoint[1] -= val
+        elif  l == 'E':
+            waypoint[0] += val
+        elif  l == 'W':
+            waypoint[0] -= val
+        elif  l == 'R':
+            temp = waypoint[0]
+            if val == 90:
+                waypoint[0] = waypoint[1]
+                waypoint[1] = -temp
+            elif val == 180:
+                waypoint[0] = -waypoint[0]
+                waypoint[1] = -waypoint[1]
+            elif val == 270:
+                waypoint[0] = -waypoint[1]
+                waypoint[1] = temp
+        elif  l == 'L':
+            temp = waypoint[0]
+            if val == 90:
+                waypoint[0] = -waypoint[1]
+                waypoint[1] = temp
+            elif val == 180:
+                waypoint[0] = -waypoint[0]
+                waypoint[1] = -waypoint[1]
+            elif val == 270:
+                waypoint[0] = waypoint[1]
+                waypoint[1] = -temp
+        elif  l == 'F':
+            coords[0] += val * waypoint[0]
+            coords[1] += val * waypoint[1]
+
+    print(f'Part 2: {abs(coords[0]) + abs(coords[1])}')
